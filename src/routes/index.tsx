@@ -11,6 +11,7 @@ import { Faq } from "@/components/Faq";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const TITLE = "Boya Winn Consulting | Création d'entreprise, Comptabilité & Formation";
 const DESCRIPTION =
@@ -54,6 +55,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background">
+      <SmoothScroll />
       <Navbar />
       <main>
         <Hero />
