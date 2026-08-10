@@ -60,10 +60,13 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <SmoothScroll />
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <Services />
+        <Stats />
         <WhyUs />
         <CreationSection />
         <School />
@@ -75,5 +78,6 @@ function Index() {
       <Footer />
       <WhatsAppFloat />
     </div>
+
   );
 }
