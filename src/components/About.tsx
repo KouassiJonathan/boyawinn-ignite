@@ -1,5 +1,6 @@
 import { Building2, Calculator, Receipt, Briefcase, GraduationCap } from "lucide-react";
 import { Reveal } from "./Reveal";
+import aboutImage from "@/assets/section-about.jpg";
 
 const domains = [
   { icon: Building2, label: "Création d'entreprise" },
@@ -23,6 +24,16 @@ export function About() {
             leurs démarches de création, leur suivi comptable et fiscal ainsi que dans le
             développement de leurs compétences professionnelles.
           </p>
+          <div className="mt-8 overflow-hidden rounded-xl border border-border shadow-card">
+            <img
+              src={aboutImage}
+              alt="L'équipe de Boya Winn Consulting en réunion avec un client"
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="h-[240px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[300px]"
+            />
+          </div>
         </Reveal>
 
         <Reveal delay={120}>

@@ -9,6 +9,7 @@ import {
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { waLink, WA_MESSAGES } from "@/lib/site";
+import servicesImage from "@/assets/section-services.jpg";
 
 type Service = {
   icon: LucideIcon;
@@ -99,6 +100,21 @@ export function Services() {
             subtitle="De la création de votre entreprise à son suivi comptable, nous vous accompagnons à chaque étape."
           />
         </Reveal>
+
+        <Reveal delay={80}>
+          <div className="mt-10 overflow-hidden rounded-xl border border-border shadow-card">
+            <img
+              src={servicesImage}
+              alt="Comptable analysant des états financiers pour une entreprise accompagnée par Boya Winn Consulting"
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="h-[220px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[300px] lg:h-[360px]"
+            />
+          </div>
+        </Reveal>
+
+
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {services.map((s, i) => (

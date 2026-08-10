@@ -1,6 +1,7 @@
 import { CheckCircle2, ArrowRight, Timer } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { waLink, WA_MESSAGES } from "@/lib/site";
+import creationImage from "@/assets/section-creation.jpg";
 
 const prestations = [
   "Déclaration fiscale d'existence",
@@ -50,6 +51,16 @@ export function CreationSection() {
         </Reveal>
 
         <Reveal delay={120}>
+          <div className="mb-6 overflow-hidden rounded-xl border border-anthracite-foreground/12">
+            <img
+              src={creationImage}
+              alt="Entrepreneur signant les documents de création de son entreprise à Abidjan"
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="h-[220px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[280px]"
+            />
+          </div>
           <ul className="grid gap-3 rounded-xl border border-anthracite-foreground/12 bg-anthracite-foreground/5 p-6 sm:p-8">
             {prestations.map((p) => (
               <li key={p} className="flex gap-3 text-sm text-anthracite-foreground/90">
