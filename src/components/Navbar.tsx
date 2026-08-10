@@ -61,18 +61,23 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-semibold text-muted-foreground transition-colors hover:text-brick"
+              aria-current={active === l.href ? "true" : undefined}
+              className={cn(
+                "nav-underline text-sm font-semibold transition-colors hover:text-brick",
+                active === l.href ? "text-brick" : "text-muted-foreground",
+              )}
             >
               {l.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-colors hover:bg-brick-strong"
+            className="btn-shine inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-brick-strong hover:shadow-card"
           >
             Nous contacter
             <ArrowRight className="h-4 w-4" strokeWidth={2} />
           </a>
+
         </nav>
 
         <button
