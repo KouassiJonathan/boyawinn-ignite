@@ -162,6 +162,155 @@
   animation: bw-arrive 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* --- Dynamisme : hero, marquee, boutons, liens --- */
+
+@keyframes bw-aura {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+    opacity: 0.8;
+  }
+}
+
+@utility hero-aura {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 55rem;
+    height: 55rem;
+    border-radius: 9999px;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--brick) 42%, transparent) 0%,
+      transparent 62%
+    );
+    filter: blur(40px);
+    animation: bw-aura 14s ease-in-out infinite;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse at 30% 20%, black, transparent 75%);
+  }
+}
+
+@keyframes bw-hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility hero-in {
+  animation: bw-hero-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bw-word {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em) rotateX(-40deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility word-swap {
+  animation: bw-word 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes bw-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@utility float-card {
+  animation: bw-float 5.5s ease-in-out infinite;
+}
+
+@keyframes bw-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@utility marquee-track {
+  animation: bw-marquee 32s linear infinite;
+}
+
+@utility marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%) skewX(-18deg);
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.35), transparent);
+    transition: transform 0.7s ease;
+  }
+
+  &:hover::after {
+    transform: translateX(120%) skewX(-18deg);
+  }
+}
+
+@utility nav-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    background: var(--brick);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover::after,
+  &[aria-current="true"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -170,8 +319,14 @@
     opacity: 1;
     animation: none !important;
   }
-  .section-arrive {
+  .section-arrive,
+  .hero-aura::before,
+  .hero-in,
+  .word-swap,
+  .float-card,
+  .marquee-track {
     animation: none !important;
   }
 }
+
 
