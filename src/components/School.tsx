@@ -2,6 +2,7 @@ import { FileText, Landmark, Receipt, Wallet, ShieldCheck, ArrowRight } from "lu
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { waLink, WA_MESSAGES } from "@/lib/site";
+import formationImage from "@/assets/section-formation.jpg";
 
 const modules = [
   {
@@ -41,6 +42,19 @@ export function School() {
             title="École des Comptables"
             subtitle="Apprenez la comptabilité avec des outils utilisés dans le monde professionnel."
           />
+        </Reveal>
+
+        <Reveal delay={60}>
+          <div className="mt-10 overflow-hidden rounded-xl border border-border shadow-card">
+            <img
+              src={formationImage}
+              alt="Session de formation comptable de l'École des Comptables de Boya Winn Consulting"
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="h-[220px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[320px] lg:h-[380px]"
+            />
+          </div>
         </Reveal>
 
         <Reveal delay={80}>
