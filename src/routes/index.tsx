@@ -12,6 +12,10 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { Marquee } from "@/components/Marquee";
+import { Stats } from "@/components/Stats";
+
 
 const TITLE = "Boya Winn Consulting | Création d'entreprise, Comptabilité & Formation";
 const DESCRIPTION =
@@ -56,10 +60,13 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <SmoothScroll />
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <Services />
+        <Stats />
         <WhyUs />
         <CreationSection />
         <School />
@@ -71,5 +78,6 @@ function Index() {
       <Footer />
       <WhatsAppFloat />
     </div>
+
   );
 }

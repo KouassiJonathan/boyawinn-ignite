@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string>("#accueil");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -16,11 +17,32 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    const ids = NAV_LINKS.map((l) => l.href.slice(1));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (!sections.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
+
 
   return (
     <header
@@ -39,18 +61,23 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-semibold text-muted-foreground transition-colors hover:text-brick"
+              aria-current={active === l.href ? "true" : undefined}
+              className={cn(
+                "nav-underline text-sm font-semibold transition-colors hover:text-brick",
+                active === l.href ? "text-brick" : "text-muted-foreground",
+              )}
             >
               {l.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-colors hover:bg-brick-strong"
+            className="btn-shine inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-brick-strong hover:shadow-card"
           >
             Nous contacter
             <ArrowRight className="h-4 w-4" strokeWidth={2} />
           </a>
+
         </nav>
 
         <button
