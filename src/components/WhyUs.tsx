@@ -1,61 +1,78 @@
-import { Timer, HeartHandshake, Briefcase, GraduationCap } from "lucide-react";
-import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import whyUsImage from "@/assets/section-whyus.jpg";
 
-const items = [
-  { icon: Timer, title: "Rapidité", text: "Création de votre entreprise en 72h." },
+const advantages = [
   {
-    icon: HeartHandshake,
-    title: "Accompagnement",
-    text: "Un accompagnement personnalisé pour vos démarches administratives, comptables et fiscales.",
+    num: "01",
+    title: "Rapidité",
+    text: "Votre entreprise créée en 72h, dossier administratif complet à la clé.",
   },
   {
-    icon: Briefcase,
-    title: "Expertise",
-    text: "Des solutions adaptées aux besoins des entrepreneurs et des entreprises.",
+    num: "02",
+    title: "Accompagnement personnalisé",
+    text: "Un interlocuteur dédié pour vos démarches administratives, comptables et fiscales.",
   },
   {
-    icon: GraduationCap,
-    title: "Formation pratique",
-    text: "Une formation orientée vers la pratique et les outils professionnels.",
+    num: "03",
+    title: "Rigueur",
+    text: "Déclarations, bilans et contrôles traités avec les outils utilisés par l'administration.",
+  },
+  {
+    num: "04",
+    title: "Expertise transversale",
+    text: "Création, comptabilité, fiscalité, conseil et formation dans un même cabinet.",
   },
 ];
 
 export function WhyUs() {
   return (
-    <section className="bg-surface py-20 lg:py-28">
-      <div className="container-bw">
-        <Reveal>
-          <SectionHeading eyebrow="Nos atouts" title="Pourquoi choisir Boya Winn Consulting ?" />
-        </Reveal>
-        <div className="mt-14 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <Reveal>
-            <div className="overflow-hidden rounded-xl border border-border shadow-card">
-              <img
-                src={whyUsImage}
-                alt="Consultante de Boya Winn Consulting accueillant ses clients dans les bureaux du cabinet"
-                width={1200}
-                height={900}
-                loading="lazy"
-                className="h-[280px] w-full object-cover transition-transform duration-700 hover:scale-105 lg:h-[420px]"
-              />
-            </div>
-          </Reveal>
+    <section
+      id="pourquoi"
+      className="relative overflow-hidden bg-anthracite py-24 text-anthracite-foreground lg:py-32"
+    >
+      <div
+        aria-hidden="true"
+        className="grid-lines pointer-events-none absolute inset-0 text-anthracite-foreground/[0.05]"
+      />
+      <div className="container-bw relative">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+          <div>
+            <Reveal>
+              <p className="label-eyebrow">Pourquoi Boya Winn</p>
+              <h2 className="h-display mt-6">Pourquoi choisir Boya Winn ?</h2>
+            </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {items.map((it, i) => (
-              <Reveal key={it.title} delay={i * 80} className="h-full">
-                <div className="h-full rounded-xl border border-border bg-card p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card">
-                  <span className="grid h-11 w-11 place-items-center rounded-md bg-brick/10 text-brick">
-                    <it.icon className="h-5 w-5" strokeWidth={2} />
-                  </span>
-                  <h3 className="mt-5 text-base font-extrabold text-anthracite">{it.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.text}</p>
-                </div>
-              </Reveal>
-            ))}
+            <ul className="mt-14 border-t border-anthracite-foreground/15">
+              {advantages.map((a, i) => (
+                <Reveal key={a.num} as="li" delay={i * 80}>
+                  <div className="group grid grid-cols-[auto_minmax(0,1fr)] gap-6 border-b border-anthracite-foreground/15 py-8 transition-colors duration-300 hover:border-brick sm:gap-10">
+                    <span className="font-display text-sm font-bold tracking-[0.14em] text-brick">
+                      {a.num}
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-lg font-bold uppercase tracking-[0.08em] sm:text-xl">
+                        {a.title}
+                      </h3>
+                      <p className="mt-2 max-w-xl text-sm leading-relaxed text-anthracite-foreground/70">
+                        {a.text}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </ul>
           </div>
+
+          <Reveal delay={120} className="lg:pt-24">
+            <img
+              src={whyUsImage}
+              alt="Consultante du cabinet Boya Winn Consulting accueillant un client dans les bureaux d'Abidjan"
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="h-[300px] w-full object-cover lg:h-[560px]"
+            />
+          </Reveal>
         </div>
       </div>
     </section>
