@@ -11,6 +11,7 @@
 
 @theme inline {
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Manrope", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -111,10 +112,91 @@
 
   h1,
   h2,
-  h3 {
-    letter-spacing: -0.02em;
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
+}
+
+/* Titres de section — hiérarchie corporate */
+@utility h-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  font-size: clamp(1.9rem, 1.1rem + 3vw, 3.4rem);
+}
+
+@utility h-sub {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.75rem);
+}
+
+@utility label-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brick);
+
+  &::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
+}
+
+/* Ligne fine qui se déploie au survol */
+@utility hover-rule {
+  & .rule-line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  & .rule-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--brick);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover .rule-line::after,
+  &:focus-visible .rule-line::after {
+    transform: scaleX(1);
+  }
+}
+
+@utility index-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  color: color-mix(in oklab, var(--anthracite) 16%, transparent);
+  transition: color 0.35s ease;
+}
+
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 88px 88px;
 }
 
 @utility container-bw {
