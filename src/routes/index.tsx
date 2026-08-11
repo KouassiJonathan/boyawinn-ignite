@@ -67,16 +67,19 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
-        <Marquee />
+        <Engagements />
+        <About />
+        <Expertise />
         <Services />
-        <Stats />
         <WhyUs />
+        <Method />
         <CreationSection />
         <School />
         <Pricing />
-        <About />
         <Faq />
+        <Cta />
         <Contact />
+
       </main>
       <Footer />
       <WhatsAppFloat />
