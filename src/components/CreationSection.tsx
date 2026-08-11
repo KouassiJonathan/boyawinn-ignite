@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowRight, Timer } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { waLink, WA_MESSAGES } from "@/lib/site";
 import creationImage from "@/assets/section-creation.jpg";
@@ -8,67 +8,85 @@ const prestations = [
   "Registre de commerce",
   "Déclaration de souscription et de versement",
   "Contrat de bail",
-  "Possibilité de domiciliation au siège du cabinet",
+  "Domiciliation possible au siège du cabinet",
   "CNPS",
-  "Rattachement et suivi comptable offert pendant 1 mois",
+  "Suivi comptable offert pendant 1 mois",
 ];
 
 const structures = ["Personne physique", "SARL", "SA", "SNC", "SCOOPS", "ONG"];
 
 export function CreationSection() {
   return (
-    <section className="bg-anthracite py-20 text-anthracite-foreground lg:py-28">
-      <div className="container-bw grid gap-12 lg:grid-cols-2 lg:gap-16">
+    <section id="creation" className="bg-surface py-24 lg:py-32">
+      <div className="container-bw grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         <Reveal>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brick">
-            Création d'entreprise
-          </p>
-          <h2 className="mt-3 text-2xl font-extrabold sm:text-3xl lg:text-4xl">
-            Créez votre entreprise simplement et rapidement
+          <p className="label-eyebrow">Création d'entreprise</p>
+          <h2 className="h-display mt-6 text-anthracite">
+            Créez votre entreprise
+            <br className="hidden sm:block" /> en 72 heures.
           </h2>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <span className="text-3xl font-extrabold text-brick sm:text-4xl">139 000 FCFA</span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-brick px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-primary-foreground">
-              <Timer className="h-4 w-4" />
-              Création en 72h
+          <div className="mt-9 flex flex-wrap items-baseline gap-x-6 gap-y-3 border-y border-border py-6">
+            <span className="font-display text-3xl font-bold tracking-tight text-brick sm:text-4xl">
+              139 000 FCFA
+            </span>
+            <span className="text-sm font-semibold uppercase tracking-[0.14em] text-anthracite">
+              Dossier complet
             </span>
           </div>
 
-          <p className="mt-6 max-w-lg text-sm leading-relaxed text-anthracite-foreground/75">
-            Structures concernées : {structures.join(", ")}.
-          </p>
+          <div className="mt-9">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+              Structures concernées
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {structures.map((s) => (
+                <li
+                  key={s}
+                  className="border border-border bg-background px-3.5 py-2 text-xs font-semibold text-anthracite transition-colors hover:border-brick hover:text-brick"
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <a
             href={waLink(WA_MESSAGES.creation)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center justify-center gap-2 rounded-md bg-brick px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brick-strong"
+            className="group mt-10 inline-flex items-center justify-center gap-2.5 bg-anthracite px-7 py-4 text-sm font-semibold text-anthracite-foreground transition-colors duration-200 hover:bg-brick"
           >
             Je veux créer mon entreprise
-            <ArrowRight className="h-4 w-4" />
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              strokeWidth={1.75}
+            />
           </a>
         </Reveal>
 
-        <Reveal delay={120}>
-          <div className="mb-6 overflow-hidden rounded-xl border border-anthracite-foreground/12">
-            <img
-              src={creationImage}
-              alt="Entrepreneur signant les documents de création de son entreprise à Abidjan"
-              width={1200}
-              height={900}
-              loading="lazy"
-              className="h-[220px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[280px]"
-            />
-          </div>
-          <ul className="grid gap-3 rounded-xl border border-anthracite-foreground/12 bg-anthracite-foreground/5 p-6 sm:p-8">
-            {prestations.map((p) => (
-              <li key={p} className="flex gap-3 text-sm text-anthracite-foreground/90">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brick" strokeWidth={2} />
-                <span>{p}</span>
+        <Reveal delay={110}>
+          <img
+            src={creationImage}
+            alt="Entrepreneur signant les documents de création de son entreprise avec Boya Winn Consulting"
+            width={1200}
+            height={900}
+            loading="lazy"
+            className="h-[220px] w-full object-cover sm:h-[280px]"
+          />
+          <ol className="mt-px border border-border bg-background">
+            {prestations.map((p, i) => (
+              <li
+                key={p}
+                className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-4 border-b border-border px-6 py-4 text-sm text-anthracite last:border-b-0 sm:px-8"
+              >
+                <span className="font-display text-xs font-bold tabular-nums text-brick">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-muted-foreground">{p}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </Reveal>
       </div>
     </section>
