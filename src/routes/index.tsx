@@ -1,20 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { Engagements } from "@/components/Engagements";
+import { About } from "@/components/About";
+import { Expertise } from "@/components/Expertise";
 import { Services } from "@/components/Services";
 import { WhyUs } from "@/components/WhyUs";
+import { Method } from "@/components/Method";
 import { CreationSection } from "@/components/CreationSection";
 import { School } from "@/components/School";
 import { Pricing } from "@/components/Pricing";
-import { About } from "@/components/About";
 import { Faq } from "@/components/Faq";
+import { Cta } from "@/components/Cta";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { Marquee } from "@/components/Marquee";
-import { Stats } from "@/components/Stats";
+
 
 
 const TITLE = "Boya Winn Consulting | Création d'entreprise, Comptabilité & Formation";
