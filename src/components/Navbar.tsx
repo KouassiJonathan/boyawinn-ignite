@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
-import { NAV_LINKS } from "@/lib/site";
+import { NAV_LINKS, waLink, WA_MESSAGES } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { waLink, WA_MESSAGES } from "@/lib/site";
 
 const CTA_TEXT = "Parler à un conseiller";
 
