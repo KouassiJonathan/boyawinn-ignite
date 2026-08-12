@@ -1,5 +1,6 @@
 import { Counter } from "./Counter";
 import { Reveal } from "./Reveal";
+import { cn } from "@/lib/utils";
 
 const facts = [
   { to: 72, suffix: "h", label: "Pour créer votre entreprise" },
@@ -38,8 +39,4 @@ export function Engagements() {
       </div>
     </section>
   );
-}
-
-function cn(...classes: (string | false | undefined)[]) {
-  return classes.filter(Boolean).join(" ");
 }

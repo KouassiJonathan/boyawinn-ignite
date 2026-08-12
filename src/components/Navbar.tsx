@@ -53,21 +53,32 @@ export function Navbar() {
         scrolled ? "border-border shadow-soft" : "border-transparent",
       )}
     >
-      <div className="container-bw flex items-center justify-between py-3.5 lg:py-4">
-        {/* Logo apparaît seulement après le scroll */}
+      <div className="container-bw flex items-center py-3.5 lg:py-4">
+        {/* Logo desktop */}
         <a
           href="#accueil"
           className={cn(
-            "min-w-0 transition-all duration-300",
-            scrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none lg:pointer-events-auto",
+            "hidden min-w-0 transition-all duration-300 lg:block",
+            scrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none",
           )}
           aria-label="Boya Winn Consulting — accueil"
         >
           <Logo className="h-10 w-auto sm:h-11" />
         </a>
 
+        {/* Mobile logo */}
+        <a href="#accueil" className="min-w-0 lg:hidden" aria-label="Boya Winn Consulting — accueil">
+          <Logo className="h-10 w-auto" />
+        </a>
+
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
+        <nav
+          className={cn(
+            "hidden items-center gap-8 transition-all duration-300 lg:flex",
+            scrolled ? "ml-auto opacity-100" : "ml-auto opacity-0 pointer-events-none absolute",
+          )}
+          aria-label="Navigation principale"
+        >
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
@@ -92,8 +103,8 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile : logo + hamburger */}
-        <div className="flex items-center gap-3 lg:hidden">
+        {/* Mobile CTA + hamburger */}
+        <div className="ml-auto flex items-center gap-3 lg:hidden">
           <a
             href={waLink(WA_MESSAGES.general)}
             target="_blank"
@@ -113,17 +124,21 @@ export function Navbar() {
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+      </div>
 
-        {/* Desktop hero-only CTA quand non scrollé */}
+      {/* Hero-only CTA desktop */}
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 hidden items-center justify-end px-8 lg:flex",
+          scrolled ? "opacity-0" : "opacity-100",
+        )}
+        aria-hidden={scrolled ? "true" : undefined}
+      >
         <a
           href={waLink(WA_MESSAGES.general)}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "hidden lg:inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-brick-strong hover:shadow-card",
-            scrolled && "opacity-0 pointer-events-none absolute",
-          )}
-          aria-hidden={scrolled ? "true" : undefined}
+          className="pointer-events-auto btn-shine inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-brick-strong hover:shadow-card"
         >
           {CTA_TEXT}
           <ArrowRight className="h-4 w-4" strokeWidth={2} />
