@@ -31,7 +31,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-background py-24 lg:py-32">
+    <section id="faq" className="bg-surface py-24 lg:py-32">
       <div className="container-bw grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
         <Reveal>
           <p className="label-eyebrow">FAQ</p>

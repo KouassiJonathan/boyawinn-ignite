@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { waLink, WA_MESSAGES } from "@/lib/site";
 
 export function Cta() {
@@ -8,12 +9,8 @@ export function Cta() {
         aria-hidden="true"
         className="grid-lines pointer-events-none absolute inset-0 text-anthracite-foreground/[0.06]"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 top-1/2 hidden h-[26rem] w-[26rem] -translate-y-1/2 rotate-45 border border-brick/25 lg:block"
-      />
       <div className="container-bw relative">
-        <p className="label-eyebrow">Passons à l'action</p>
+        <p className="label-eyebrow-light">Passons à l'action</p>
         <h2 className="h-display mt-6 max-w-3xl">
           Construisons ensemble votre prochaine étape.
         </h2>
@@ -36,10 +33,13 @@ export function Cta() {
             />
           </a>
           <a
-            href="#services"
+            href={waLink(WA_MESSAGES.general)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 border border-anthracite-foreground/30 px-7 py-4 text-sm font-semibold text-anthracite-foreground transition-colors duration-200 hover:border-anthracite-foreground hover:bg-anthracite-foreground/5"
           >
-            Découvrir nos services
+            <WhatsAppIcon className="h-4 w-4" />
+            Écrire sur WhatsApp
           </a>
         </div>
       </div>

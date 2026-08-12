@@ -4,25 +4,23 @@ import { ADDRESS, PHONES, telLink } from "@/lib/site";
 
 const entreprise = [
   { label: "À propos", href: "#a-propos" },
-  { label: "Domaines d'expertise", href: "#expertise" },
   { label: "Notre méthode", href: "#methode" },
+  { label: "Tarifs", href: "#tarifs" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const services = [
-  { label: "Création d'entreprise", href: "#creation" },
+  { label: "Création d'entreprise", href: "#services" },
   { label: "Suivi comptable et fiscal", href: "#services" },
-  { label: "École des Comptables", href: "#formation" },
-  { label: "Tarifs", href: "#tarifs" },
+  { label: "École des Comptables", href: "#services" },
 ];
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-anthracite text-anthracite-foreground">
-      <div className="container-bw grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1fr] lg:py-20">
+      <div className="container-bw grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.25fr] lg:py-20">
         <div>
-          <Logo variant="light" />
+          <Logo variant="light" className="h-10 w-auto sm:h-11" />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-anthracite-foreground/65">
             Cabinet de conseil basé à Abidjan : création d'entreprise, comptabilité, fiscalité,
             conseil et formation professionnelle.
@@ -33,7 +31,7 @@ export function Footer() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brick">Entreprise</p>
           <ul className="mt-5 space-y-3">
             {entreprise.map((l) => (
-              <li key={l.href}>
+              <li key={l.label}>
                 <a
                   href={l.href}
                   className="text-sm text-anthracite-foreground/70 transition-colors hover:text-anthracite-foreground"
@@ -83,21 +81,14 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Signature typographique */}
-      <div aria-hidden="true" className="container-bw overflow-hidden pb-6">
-        <p className="select-none whitespace-nowrap font-display text-[13vw] font-bold leading-[0.85] tracking-[-0.05em] text-anthracite-foreground/[0.06]">
-          BOYA WINN CONSULTING
-        </p>
-      </div>
-
       <div className="border-t border-anthracite-foreground/10">
         <div className="container-bw flex flex-col gap-3 py-6 text-xs text-anthracite-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Boya Winn Consulting. Tous droits réservés.</p>
           <p className="flex flex-wrap gap-x-6 gap-y-2">
-            <a href="#contact" className="transition-colors hover:text-anthracite-foreground">
+            <a href="#" className="transition-colors hover:text-anthracite-foreground">
               Mentions légales
             </a>
-            <a href="#contact" className="transition-colors hover:text-anthracite-foreground">
+            <a href="#" className="transition-colors hover:text-anthracite-foreground">
               Politique de confidentialité
             </a>
           </p>
