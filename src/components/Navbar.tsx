@@ -3,6 +3,9 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
 import { NAV_LINKS } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { waLink, WA_MESSAGES } from "@/lib/site";
+
+const CTA_TEXT = "Parler à un conseiller";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -10,7 +13,7 @@ export function Navbar() {
   const [active, setActive] = useState<string>("#accueil");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -43,19 +46,27 @@ export function Navbar() {
     };
   }, [open]);
 
-
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b bg-background/90 backdrop-blur transition-shadow",
+        "fixed top-0 z-50 w-full border-b bg-background transition-all duration-300",
         scrolled ? "border-border shadow-soft" : "border-transparent",
       )}
     >
-      <div className="container-bw grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 lg:py-4">
-        <a href="#accueil" className="min-w-0" aria-label="Boya Winn Consulting — accueil">
-          <Logo />
+      <div className="container-bw flex items-center justify-between py-3.5 lg:py-4">
+        {/* Logo apparaît seulement après le scroll */}
+        <a
+          href="#accueil"
+          className={cn(
+            "min-w-0 transition-all duration-300",
+            scrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none lg:pointer-events-auto",
+          )}
+          aria-label="Boya Winn Consulting — accueil"
+        >
+          <Logo className="h-10 w-auto sm:h-11" />
         </a>
 
+        {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
           {NAV_LINKS.map((l) => (
             <a
@@ -71,24 +82,52 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={waLink(WA_MESSAGES.general)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shine inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-brick-strong hover:shadow-card"
           >
-            Nous contacter
+            {CTA_TEXT}
             <ArrowRight className="h-4 w-4" strokeWidth={2} />
           </a>
-
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-anthracite transition-colors hover:border-brick hover:text-brick lg:hidden"
+        {/* Mobile : logo + hamburger */}
+        <div className="flex items-center gap-3 lg:hidden">
+          <a
+            href={waLink(WA_MESSAGES.general)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md bg-brick px-4 py-2.5 text-sm font-semibold text-primary-foreground"
+          >
+            {CTA_TEXT}
+            <ArrowRight className="h-4 w-4" strokeWidth={2} />
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-anthracite transition-colors hover:border-brick hover:text-brick"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {/* Desktop hero-only CTA quand non scrollé */}
+        <a
+          href={waLink(WA_MESSAGES.general)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "hidden lg:inline-flex items-center gap-2 rounded-md bg-brick px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-brick-strong hover:shadow-card",
+            scrolled && "opacity-0 pointer-events-none absolute",
+          )}
+          aria-hidden={scrolled ? "true" : undefined}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          {CTA_TEXT}
+          <ArrowRight className="h-4 w-4" strokeWidth={2} />
+        </a>
       </div>
 
       {open && (
@@ -110,16 +149,6 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <div className="container-bw pb-5">
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="flex w-full items-center justify-center gap-2 rounded-md bg-brick px-5 py-3.5 text-sm font-semibold text-primary-foreground"
-            >
-              Nous contacter
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
         </nav>
       )}
     </header>

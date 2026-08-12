@@ -11,20 +11,19 @@ const proofs = [
 export function About() {
   return (
     <section id="a-propos" className="bg-background py-24 lg:py-32">
-      <div className="container-bw grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20">
+      <div className="container-bw grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20">
         <Reveal className="relative">
-          <div className="absolute -left-3 -top-3 hidden h-24 w-24 border-l-2 border-t-2 border-brick sm:block" />
           <img
             src={aboutImage}
             alt="Équipe du cabinet Boya Winn Consulting en réunion avec un client à Abidjan"
             width={1200}
             height={900}
             loading="lazy"
-            className="relative h-[320px] w-full object-cover sm:h-[440px] lg:h-[520px]"
+            className="h-[320px] w-full object-cover sm:h-[440px] lg:h-[520px]"
           />
-          <div className="relative -mt-px border border-border bg-background px-6 py-5 sm:absolute sm:-bottom-8 sm:right-0 sm:max-w-[17rem] sm:border-t-2 sm:border-t-brick">
+          <div className="absolute -bottom-6 right-6 border border-border bg-background px-6 py-5 shadow-card sm:right-10">
             <p className="font-display text-2xl font-bold text-anthracite">Abidjan</p>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1 max-w-[15rem] text-sm text-muted-foreground">
               Angré 9ème tranche, Immeuble CGK, route de la CNPS
             </p>
           </div>

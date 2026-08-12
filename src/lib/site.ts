@@ -24,9 +24,9 @@ export function telLink(phone: string) {
 
 export const NAV_LINKS = [
   { label: "Accueil", href: "#accueil" },
-  { label: "Services", href: "#services" },
-  { label: "Tarifs", href: "#tarifs" },
-  { label: "Formation", href: "#formation" },
   { label: "À propos", href: "#a-propos" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "#services" },
+  { label: "Méthode", href: "#methode" },
+  { label: "Tarifs", href: "#tarifs" },
+  { label: "FAQ", href: "#faq" },
 ] as const;
