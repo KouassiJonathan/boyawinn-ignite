@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Boya Winn Consulting — design system
+ * Boya Winn Consulting — design system premium
  * Palette: rouge brique #B5473A, anthracite #252525, gris #4A4A4A / #F1F1F1, blanc.
  */
 
@@ -156,6 +156,25 @@
   }
 }
 
+@utility label-eyebrow-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brick);
+
+  &::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.8;
+  }
+}
+
 /* Ligne fine qui se déploie au survol */
 @utility hover-rule {
   & .rule-line {
@@ -197,6 +216,13 @@
     linear-gradient(to right, currentColor 1px, transparent 1px),
     linear-gradient(to bottom, currentColor 1px, transparent 1px);
   background-size: 88px 88px;
+}
+
+@utility grid-lines-sm {
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 @utility container-bw {
@@ -242,113 +268,6 @@
 
 .section-arrive {
   animation: bw-arrive 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* --- Dynamisme : hero, marquee, boutons, liens --- */
-
-@keyframes bw-aura {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.55;
-  }
-  50% {
-    transform: translate3d(4%, -3%, 0) scale(1.12);
-    opacity: 0.8;
-  }
-}
-
-@utility hero-aura {
-  &::before {
-    content: "";
-    position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 55rem;
-    height: 55rem;
-    border-radius: 9999px;
-    pointer-events: none;
-    background: radial-gradient(
-      circle,
-      color-mix(in oklab, var(--brick) 42%, transparent) 0%,
-      transparent 62%
-    );
-    filter: blur(40px);
-    animation: bw-aura 14s ease-in-out infinite;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      linear-gradient(to right, oklch(1 0 0 / 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(1 0 0 / 0.045) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse at 30% 20%, black, transparent 75%);
-  }
-}
-
-@keyframes bw-hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@utility hero-in {
-  animation: bw-hero-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes bw-word {
-  from {
-    opacity: 0;
-    transform: translateY(0.4em) rotateX(-40deg);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@utility word-swap {
-  animation: bw-word 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes bw-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@utility float-card {
-  animation: bw-float 5.5s ease-in-out infinite;
-}
-
-@keyframes bw-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@utility marquee-track {
-  animation: bw-marquee 32s linear infinite;
-}
-
-@utility marquee-mask {
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 @utility btn-shine {
@@ -401,14 +320,7 @@
     opacity: 1;
     animation: none !important;
   }
-  .section-arrive,
-  .hero-aura::before,
-  .hero-in,
-  .word-swap,
-  .float-card,
-  .marquee-track {
+  .section-arrive {
     animation: none !important;
   }
 }
-
-
