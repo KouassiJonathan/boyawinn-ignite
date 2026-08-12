@@ -13,7 +13,7 @@ const offers = [
       "Documents administratifs",
       "Contrat de bail",
       "CNPS",
-      "Suivi comptable offert pendant 1 mois",
+      "Suivi comptable offert 1 mois",
     ],
     cta: "Commencer",
     href: waLink(WA_MESSAGES.creation),
@@ -51,7 +51,7 @@ const offers = [
 
 export function Pricing() {
   return (
-    <section id="tarifs" className="border-y border-border bg-surface py-24 lg:py-32">
+    <section id="tarifs" className="border-y border-border bg-background py-24 lg:py-32">
       <div className="container-bw">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <Reveal>
@@ -73,7 +73,7 @@ export function Pricing() {
                 className={cn(
                   "flex h-full flex-col border p-8 transition-colors duration-300 sm:p-10",
                   o.featured
-                    ? "border-brick bg-anthracite text-anthracite-foreground"
+                    ? "border-anthracite bg-anthracite text-anthracite-foreground"
                     : "border-border bg-background hover:border-anthracite/30",
                 )}
               >

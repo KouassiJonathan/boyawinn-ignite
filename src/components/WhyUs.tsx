@@ -35,35 +35,35 @@ export function WhyUs() {
         className="grid-lines pointer-events-none absolute inset-0 text-anthracite-foreground/[0.05]"
       />
       <div className="container-bw relative">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-          <div>
-            <Reveal>
-              <p className="label-eyebrow">Pourquoi Boya Winn</p>
-              <h2 className="h-display mt-6">Pourquoi choisir Boya Winn ?</h2>
-            </Reveal>
+        <Reveal>
+          <p className="label-eyebrow-light">Pourquoi Boya Winn</p>
+          <h2 className="h-display mt-6 max-w-2xl">
+            Pourquoi choisir Boya Winn ?
+          </h2>
+        </Reveal>
 
-            <ul className="mt-14 border-t border-anthracite-foreground/15">
-              {advantages.map((a, i) => (
-                <Reveal key={a.num} as="li" delay={i * 80}>
-                  <div className="group grid grid-cols-[auto_minmax(0,1fr)] gap-6 border-b border-anthracite-foreground/15 py-8 transition-colors duration-300 hover:border-brick sm:gap-10">
-                    <span className="font-display text-sm font-bold tracking-[0.14em] text-brick">
-                      {a.num}
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="font-display text-lg font-bold uppercase tracking-[0.08em] sm:text-xl">
-                        {a.title}
-                      </h3>
-                      <p className="mt-2 max-w-xl text-sm leading-relaxed text-anthracite-foreground/70">
-                        {a.text}
-                      </p>
-                    </div>
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+          <ul className="border-t border-anthracite-foreground/15">
+            {advantages.map((a, i) => (
+              <Reveal key={a.num} as="li" delay={i * 80}>
+                <div className="group grid grid-cols-[auto_minmax(0,1fr)] gap-6 border-b border-anthracite-foreground/15 py-8 transition-colors duration-300 hover:border-brick sm:gap-10">
+                  <span className="font-display text-sm font-bold tracking-[0.14em] text-brick">
+                    {a.num}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg font-bold uppercase tracking-[0.08em] sm:text-xl">
+                      {a.title}
+                    </h3>
+                    <p className="mt-2 max-w-xl text-sm leading-relaxed text-anthracite-foreground/70">
+                      {a.text}
+                    </p>
                   </div>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
 
-          <Reveal delay={120} className="lg:pt-24">
+          <Reveal delay={120} className="lg:pt-8">
             <img
               src={whyUsImage}
               alt="Consultante du cabinet Boya Winn Consulting accueillant un client dans les bureaux d'Abidjan"
